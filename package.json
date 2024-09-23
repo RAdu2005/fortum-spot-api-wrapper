@@ -1,0 +1,16 @@
+{
+  "name": "fortum-spot-api-wrapper",
+  "version": "1.0.0",
+  "description": "A wrapper for Fortum FI spot price API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "RAdu2005",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.7.7",
+    "express": "^4.21.0",
+    "fortum-spot-api-wrapper": "file:"
+  }
+}
