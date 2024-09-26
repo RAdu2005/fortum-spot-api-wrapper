@@ -2,13 +2,16 @@ const express = require('express');
 const app = express();
 const price = require('./processor.js');
 
+const unit = "c/kWh";
+
 
 app.get('/now', async (req, res) => {
     try{
         const priceNow = await price.getNow();
 
         res.status(200).json({
-            price: priceNow
+            price: priceNow,
+            unit: unit
         });
     } catch (error){
         console.error('Error fetching price list', error);
@@ -24,7 +27,8 @@ app.get('/average-today', async (req, res) => {
         const average = await price.getAverage("today");
 
         res.status(200).json({
-            price: average
+            price: average,
+            unit: unit
         });
     } catch (error){
         console.error('Error fetching price list', error);
@@ -40,7 +44,8 @@ app.get('/average-tomorrow', async (req, res) => {
         const average = await price.getAverage("tomorrow");
 
         res.status(200).json({
-            price: average
+            price: average,
+            unit: unit
         });
     } catch (error){
         console.error('Error fetching price list', error);
@@ -56,7 +61,8 @@ app.get('/minimum-today', async (req, res) => {
         const minimum = await price.getMinimum("today");
 
         res.status(200).json({
-            price: minimum
+            price: minimum,
+            unit: unit
         });
     } catch (error){
         console.error('Error fetching price list', error);
@@ -72,7 +78,8 @@ app.get('/minimum-tomorrow', async (req, res) => {
         const minimum = await price.getMinimum("tomorrow");
 
         res.status(200).json({
-            price: minimum
+            price: minimum,
+            unit: unit
         });
     } catch (error){
         console.error('Error fetching price list', error);
@@ -88,7 +95,8 @@ app.get('/maximum-today', async (req, res) => {
         const maximum = await price.getMaximum("today");
 
         res.status(200).json({
-            price: maximum
+            price: maximum,
+            unit: unit
         });
     } catch (error){
         console.error('Error fetching price list', error);
@@ -104,7 +112,8 @@ app.get('/maximum-tomorrow', async (req, res) => {
         const maximum = await price.getMaximum("tomorrow");
 
         res.status(200).json({
-            price: maximum
+            price: maximum,
+            unit: unit
         });
     } catch (error){
         console.error('Error fetching price list', error);
@@ -120,7 +129,8 @@ app.get('/next-hour', async (req, res) => {
         const nextHour = await price.getNextHour();
 
         res.status(200).json({
-            price: nextHour
+            price: nextHour,
+            unit: unit
         });
     } catch (error){
         console.error('Error fetching price list', error);
