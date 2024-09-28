@@ -29,6 +29,8 @@ The wrapper uses the endpoint `https://web.fortum.fi/api/v2/spot-price-anonymous
 `/maximum-today` returns the maximum price for today
 
 `/maximum-tomorrow` returns the maximum price for next day
+
+`margin=` is an optional parameter to add the spot margin (in c/kWh) of your contract to the price (default 0)
   
 
 # Usage
