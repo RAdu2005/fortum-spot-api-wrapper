@@ -5,9 +5,10 @@ const price = require('./processor.js');
 const unit = "c/kWh";
 
 
-app.get('/now', async (req, res) => {
+app.get('/now/:margin?', async (req, res) => {
     try{
-        const priceNow = await price.getNow();
+        const margin = req.query.margin || 0;
+        const priceNow = await price.getNow() + parseFloat(margin);
 
         res.status(200).json({
             price: priceNow,
@@ -22,9 +23,10 @@ app.get('/now', async (req, res) => {
     }
 });
 
-app.get('/average-today', async (req, res) => {
+app.get('/average-today/:margin?', async (req, res) => {
     try{
-        const average = await price.getAverage("today");
+        const margin = req.query.margin || 0;
+        const average = await price.getAverage("today") + parseFloat(margin);
 
         res.status(200).json({
             price: average,
@@ -39,9 +41,10 @@ app.get('/average-today', async (req, res) => {
     }
 });
 
-app.get('/average-tomorrow', async (req, res) => {
+app.get('/average-tomorrow/:margin?', async (req, res) => {
     try{
-        const average = await price.getAverage("tomorrow");
+        const margin = req.query.margin || 0;
+        const average = await price.getAverage("tomorrow") + parseFloat(margin);
 
         res.status(200).json({
             price: average,
@@ -56,9 +59,10 @@ app.get('/average-tomorrow', async (req, res) => {
     }
 });
 
-app.get('/minimum-today', async (req, res) => {
+app.get('/minimum-today/:margin?', async (req, res) => {
     try{
-        const minimum = await price.getMinimum("today");
+        const margin = req.query.margin || 0;
+        const minimum = await price.getMinimum("today") + parseFloat(margin);
 
         res.status(200).json({
             price: minimum,
@@ -73,9 +77,10 @@ app.get('/minimum-today', async (req, res) => {
     }
 });
 
-app.get('/minimum-tomorrow', async (req, res) => {
+app.get('/minimum-tomorrow/:margin?', async (req, res) => {
     try{
-        const minimum = await price.getMinimum("tomorrow");
+        const margin = req.query.margin || 0;
+        const minimum = await price.getMinimum("tomorrow") + parseFloat(margin);
 
         res.status(200).json({
             price: minimum,
@@ -90,9 +95,10 @@ app.get('/minimum-tomorrow', async (req, res) => {
     }
 });
 
-app.get('/maximum-today', async (req, res) => {
+app.get('/maximum-today/:margin?', async (req, res) => {
     try{
-        const maximum = await price.getMaximum("today");
+        const margin = req.query.margin || 0;
+        const maximum = await price.getMaximum("today") + parseFloat(margin);
 
         res.status(200).json({
             price: maximum,
@@ -107,9 +113,10 @@ app.get('/maximum-today', async (req, res) => {
     }
 });
 
-app.get('/maximum-tomorrow', async (req, res) => {
+app.get('/maximum-tomorrow/:margin?', async (req, res) => {
     try{
-        const maximum = await price.getMaximum("tomorrow");
+        const margin = req.query.margin || 0;
+        const maximum = await price.getMaximum("tomorrow") + parseFloat(margin);
 
         res.status(200).json({
             price: maximum,
@@ -124,9 +131,10 @@ app.get('/maximum-tomorrow', async (req, res) => {
     }
 });
 
-app.get('/next-hour', async (req, res) => {
+app.get('/next-hour/:margin?', async (req, res) => {
     try{
-        const nextHour = await price.getNextHour();
+        const margin = req.query.margin || 0;
+        const nextHour = await price.getNextHour() + parseFloat(margin);
 
         res.status(200).json({
             price: nextHour,
